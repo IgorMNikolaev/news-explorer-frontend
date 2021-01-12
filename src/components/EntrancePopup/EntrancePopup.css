@@ -1,0 +1,42 @@
+.entrance__input {
+  width: 100%;
+  font-family: inherit;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  outline-color: blue;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: black;
+  padding-bottom: 13px;
+}
+
+@media (max-width: 470px) {
+  .entrance__input {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
+.entrance__input-cover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 83.25%;
+  margin-top: 30px;
+  position: relative;
+}
+
+.entrance__input-error {
+  display: none;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  color: #ff0000;
+  width: 83.25%;
+  position: absolute;
+  top: 35px;
+  left: 0;
+  display: block;
+}

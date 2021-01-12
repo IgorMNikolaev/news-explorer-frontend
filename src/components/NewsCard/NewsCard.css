@@ -1,0 +1,231 @@
+.news-card {
+  width: 400px;
+  /* height: 576px; */
+  background-color: #FFF;
+  border-radius: 16px;
+  color: #1A1B22;
+  font-style: normal;
+  font-weight: normal;
+}
+
+@media (max-width: 1439px) {
+  .news-card {
+    width: 224px;
+    /* height: 420px; */
+  }
+}
+
+@media (max-width: 784px) {
+  .news-card {
+    width: 288px;
+    /* height: 440px; */
+  }
+}
+
+.news-card__image {
+  width: 100%;
+  height: 272px;
+  background-image: url('../../images/card.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 16px 16px 0px 0px;
+  object-fit: cover;
+}
+
+@media (max-width: 1439px) {
+  .news-card__image {
+    height: 150px;
+  }
+}
+
+@media (max-width: 784px) {
+  .news-card__image {
+    height: 196px;
+  }
+}
+
+.news-card__icons {
+  max-width: 100%;
+  padding: 24px 24px 0 24px;
+  color: #000;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(min-content, max-content));
+  justify-content: end;
+  justify-items: center;
+  align-items: center;
+  font-family: Roboto;
+  font-style: normal;
+}
+
+.news-card__icons_saved {
+  justify-content: space-between;
+}
+
+@media (max-width: 1439px) {
+  .news-card__icons {
+    padding: 8px 16px 0 16px;
+  }
+}
+
+.news-card__icons-group {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(min-content, max-content));
+  justify-content: end;
+  justify-items: center;
+}
+
+.news-card__icons-key {
+  box-sizing: border-box;
+  padding: 8px 12px 8px 12px;
+  height: 40px;
+  background: #FFFFFF;
+  border-radius: 10px;
+  display:flex;
+  align-items: center;
+}
+
+.news-card__icons-key-text {
+  margin: 0;
+  font-family: Roboto-medium;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 171%;
+}
+
+.news-card__icons-message {
+  order: 1;
+  box-sizing: border-box;
+  padding: 8px 12px 8px 12px;
+  height: 40px;
+  background: #FFFFFF;
+  border-radius: 10px;
+  display: none;
+  align-items: center;
+
+}
+
+.news-card__icons-messege-text {
+  margin: 0;
+  font-family: Roboto-medium;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 120%;
+}
+
+.news-card__icons-button {
+  order:2;
+  margin-left: 5px;
+  padding: 0;
+  border: none;
+  width: 40px;
+  height: 40px;
+  background: #FFFFFF;
+  border-radius: 10px;
+}
+
+.news-card__icons-button_flag-normal {
+  width: 24px;
+  height: 24px;
+  background-image: url("../../images/flagNormal.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  padding:8px;
+}
+
+.news-card__icons-button_flag-normal:hover {
+  background-image: url("../../images/flagHover.svg");
+}
+
+.news-card__icons-button_flag-marked {
+  background-image: url("../../images/flagMarked.svg");
+}
+
+.news-card__icons-button_bucket {
+  background-image: url("../../images/bucket.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 24px;
+  height: 24px;
+  padding:8px;
+}
+
+.news-card__icons-button_bucket:hover {
+  background-image: url("../../images/bucketHover.svg");
+}
+
+.news-card__info {
+  display: grid;
+  grid-template-rows: repeat(5, minmax(min-content, max-content));
+  padding: 20px 24px 24px 24px;
+  gap: 10px;
+}
+
+@media (max-width: 1439px) {
+  .news-card__info {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 784px) {
+  .news-card__info {
+    padding: 16px;
+  }
+}
+
+.news-card__date {
+  margin: 0 0 2px 0;
+  font-family: Source Sans Pro;
+  color: #B6BCBF;
+  font-size: 18px;
+  line-height: 133%;
+}
+
+.news-card__title {
+  margin: 0 0 6px 0;
+  font-family: Roboto Slab;
+  font-size: 26px;
+  line-height: 115%;
+}
+
+@media (max-width: 1439px) {
+  .news-card__title {
+    font-size: 22px;
+    line-height: 109%;
+  }
+}
+
+@media (max-width: 784px) {
+  .news-card__title {
+    line-height: 118%;
+    margin: 0 0 2px 0;
+  }
+}
+
+.news-card__text {
+  margin: 0;
+  font-family: Roboto;
+  font-size: 16px;
+  line-height: 137%;
+  /* text-overflow: ellipsis;
+  overflow: hidden; */
+}
+
+.news-card__source {
+  margin: 0;
+  font-family: Roboto Slab;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #B6BCBF;
+}
+
+.news-card_invisable {
+  display: none;
+}
+
+.news-card_disabled:hover ~ .news-card__icons-message {
+  display: flex;
+}
+
