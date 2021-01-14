@@ -1,15 +1,28 @@
 import React from "react";
-import './InfoTooltip.css';
-
-
+import "./InfoTooltip.css";
 
 function InfoTooltip({ isOpen, onClose, onEntrance }) {
+  const handleLink = () => {
+    onClose();
+    onEntrance();
+  };
+
   return (
     <>
-      <section className={`info-Tooltip ${isOpen ? "info-Tooltip_opened" : ""}`}>
-        <div className="info-Tooltip__container">
-          <p className="info-Tooltip__infotip-text">Вы успешно зарегистрировались!</p>
-          <button className="info-Tooltip__close-button" onClick={onClose}></button>
+      <section
+        className={`info-tooltip ${isOpen ? "info-tooltip_opened" : ""}`}
+      >
+        <div className="info-tooltip__container">
+          <p className="info-tooltip__infotip-text">
+            Пользователь успешно зарегистрирован!
+          </p>
+          <button onClick={handleLink} className="info-tooltip__button">
+            Войти
+          </button>
+          <button
+            className="info-tooltip__close-button"
+            onClick={onClose}
+          ></button>
         </div>
       </section>
     </>

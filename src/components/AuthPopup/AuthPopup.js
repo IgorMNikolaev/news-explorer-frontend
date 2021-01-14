@@ -1,15 +1,8 @@
 import React from "react";
 import Popup from "../Popup/Popup";
-import './AuthPopup.css';
+import "./AuthPopup.css";
 
-function AuthPopup({
-  isOpen,
-  onClose,
-  isLoading,
-  onEntrance,
-  ...rest
-}) {
-
+function AuthPopup({ isOpen, onClose, isLoading, onEntrance, ...rest }) {
   return (
     <Popup
       name="auth"
@@ -20,8 +13,10 @@ function AuthPopup({
       submitLoadText="Регистрация..."
       isLoading={isLoading}
       Link={onEntrance}
+      redirectText="войти"
     >
-      <div className="auth__input-cover">
+      <label className="auth__input-cover">
+        Email
         <input
           type="email"
           name="Email"
@@ -30,18 +25,20 @@ function AuthPopup({
           required
         />
         <span className="auth__input-error"></span>
-      </div>
-      <div className="auth__input-cover">
+      </label>
+      <label className="auth__input-cover">
+        Пароль
         <input
-          type="passward"
+          type="password"
           name="Пароль"
           className="auth__input"
           placeholder="Введите пароль"
           required
         />
         <span className="auth__input-error"></span>
-      </div>
-      <div className="auth__input-cover">
+      </label>
+      <label className="auth__input-cover">
+        Имя
         <input
           type="text"
           name="Имя"
@@ -50,7 +47,7 @@ function AuthPopup({
           required
         />
         <span className="auth__input-error"></span>
-      </div>
+      </label>
     </Popup>
   );
 }

@@ -1,17 +1,17 @@
 .news-card-list {
-  background: #F5F6F7;
+  background: #f5f6f7;
   margin: 0;
   list-style: none;
   padding: 64px 104px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap:14px;
+  gap: 14px;
   justify-items: center;
 }
 
 @media (max-width: 1440px) {
   .news-card-list {
-    gap:16px;
+    gap: 16px;
   }
 }
 

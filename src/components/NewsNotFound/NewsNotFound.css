@@ -1,19 +1,12 @@
 .news-not-found {
   margin: 0;
-  background-color:#F5F6F7;
-  /* padding: 86px 80px 80px; */
+  background-color: #f5f6f7;
   font-style: normal;
   font-weight: normal;
   text-align: center;
   display: grid;
   justify-content: center;
 }
-
-/* @media (max-width: 600px) {
-  .news-not-found {
-    padding: 32px 16px 32px;
-  }
-} */
 
 .news-not-found__no-match {
   padding: 86px 80px 80px;
@@ -36,7 +29,7 @@
 }
 
 .news-not-found__title {
-  color: #1A1B22;
+  color: #1a1b22;
   margin: 40px 0 16px 0;
   font-family: Roboto Slab;
   font-size: 26px;
@@ -46,17 +39,17 @@
 .news-not-found__text {
   max-width: 365px;
   margin: 0;
-  color: #B6BCBF;
+  color: #b6bcbf;
   font-family: Roboto;
   font-size: 18px;
   line-height: 133%;
-  }
+}
 
 .news-not-found__error {
   padding: 86px 80px 80px;
   max-width: 365px;
   margin: 0;
-  color: #B6BCBF;
+  color: #b6bcbf;
   font-family: Roboto;
   font-size: 18px;
   line-height: 133%;

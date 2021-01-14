@@ -1,34 +1,58 @@
 import React from "react";
 import Popup from "../Popup/Popup";
-import './EntrancePopup.css';
+import "./EntrancePopup.css";
 
-function EntrancePopup({
-  isOpen,
-  onClose,
-  isLoading,
-  ...rest
-}) {
+function EntrancePopup({ isOpen, onClose, isLoading, onAuth, ...rest }) {
+  const [email, setEmail] = React.useState("");
+  const [passward, setPassward] = React.useState("");
+
+  function handleEmailChange(e) {
+    setEmail(e.target.value);
+  }
+
+  function handlePasswardChange(e) {
+    setPassward(e.target.value);
+  }
 
   return (
     <Popup
-      name="avatar"
-      title="Обновить аватар"
+      name="entrance"
+      title="Вход"
       isOpen={isOpen}
       onClose={onClose}
-      submitText="Сохранить"
-      submitLoadText="Сохранение..."
+      submitText="Войти"
+      submitLoadText="Вход..."
       isLoading={isLoading}
+      Link={onAuth}
+      redirectText="Зарегистрироваться"
     >
-      <div className="entrance__input-cover">
+      <label className="entrance__input-cover">
+        Email
         <input
-          type="url"
-          name="image"
+          type="email"
+          name="Email"
           className="entrance__input"
-          placeholder="Ссылка на новый аватар"
+          placeholder="Введите свой email"
           required
+          value={email}
+          onChange={handleEmailChange}
         />
         <span className="entrance__input-error"></span>
-      </div>
+      </label>
+
+      <label className="entrance__input-cover">
+        Пароль
+        <input
+          type="password"
+          name="Пароль"
+          className="entrance__input"
+          placeholder="Введите пароль"
+          required
+          value={passward}
+          onChange={handlePasswardChange}
+        />
+        <span className="entrance__input-error"></span>
+      </label>
     </Popup>
   );
 }

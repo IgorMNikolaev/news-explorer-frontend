@@ -1,5 +1,5 @@
 import React from "react";
-import './Popup.css';
+import "./Popup.css";
 
 function Popup({
   name,
@@ -12,10 +12,13 @@ function Popup({
   submitLoadText,
   isLoading,
   Link,
+  redirectText,
   ...rest
 }) {
-
-  const handleLink = () => {onClose(); Link()};
+  const handleLink = () => {
+    onClose();
+    Link();
+  };
 
   return (
     <>
@@ -35,9 +38,13 @@ function Popup({
             </button>
           </form>
           <button className="popup__close-button" onClick={onClose}></button>
-          <p className="auth__redirect">или <button onClick={handleLink} className="auth__button">войти</button></p>
+          <p className="popup__redirect">
+            или{" "}
+            <button onClick={handleLink} className="popup__redirect-button">
+              {redirectText}
+            </button>
+          </p>
         </div>
-
       </section>
     </>
   );

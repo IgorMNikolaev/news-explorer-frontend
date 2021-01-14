@@ -1,7 +1,7 @@
 .about {
-background-color: white;
-padding: 80px 104px;
-color: black;
+  background-color: white;
+  padding: 80px 104px;
+  color: black;
 }
 
 @media (max-width: 1080px) {
@@ -41,12 +41,12 @@ color: black;
 }
 
 .about__image {
-background-image: url(../../images/me.jpg);
-width: 464px;
-height: 464px;
-background-size: cover;
-background-repeat:no-repeat;
-border-radius: 1000px;
+  background-image: url(../../images/me.jpg);
+  width: 464px;
+  height: 464px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 1000px;
 }
 
 @media (max-width: 1080px) {
