@@ -1,0 +1,170 @@
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.2s linear 0s, opacity 0.4s linear;
+}
+
+@media (max-width: 624px) {
+  .popup {
+    top: 76px;
+    background-color: rgba(255, 255, 255, 1);
+    display: block;
+  }
+}
+
+.popup_opened {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0.2s linear 0s, opacity 0.4s linear;
+}
+
+.popup__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 430px;
+  position: relative;
+  background: #ffffff;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+}
+
+@media (max-width: 624px) {
+  .popup__container {
+    bottom: 20px;
+    width: 100%;
+    border-bottom: none;
+    box-shadow: 0 -5px 5px -5px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.popup__title {
+  font-family: Roboto-black;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 28px;
+  color: #1a1b22;
+  vertical-align: center;
+  margin: 34px 0 20px 0;
+  width: 83.25%;
+}
+
+@media (max-width: 624px) {
+  .popup__title {
+    margin-top: 16px;
+  }
+}
+
+.popup__form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.popup__submit-button {
+  width: 358px;
+  height: 64px;
+  background: #2f71e5;
+  cursor: url("../../images/Pointer.svg"), pointer;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  color: #ffffff;
+  margin: 43px 0 16px 0;
+  border-radius: 100px;
+  border: none;
+}
+
+@media (max-width: 624px) {
+  .popup__submit-button {
+    width: 89%;
+  }
+}
+
+.popup__submit-button:hover {
+  background: #347EFF;
+}
+
+.popup__submit-button:active {
+  background: #2A65CC;
+}
+
+.popup__submit-button:disabled {
+  background: #E6E8EB;
+  font-family: Roboto-medium;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #B6BCBF;
+}
+
+.popup__close-button {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0);
+  background-image: url(../../images/cross.svg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: url("../../images/Pointer.svg"), pointer;
+  position: absolute;
+  top: -45px;
+  right: -45px;
+}
+
+background: #347EFF;
+@media (max-width: 624px) {
+  .popup__close-button {
+    width: 18px;
+    height: 18px;
+    background-image: url(../../images/crossBlack.svg);
+    right: 25px;
+    top: 20px;
+  }
+}
+
+.popup__close-button:hover {
+  opacity: 0.6;
+}
+
+.popup__redirect {
+  margin: 0 0 28px 0;
+  font-family: Inter-regular;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #000000;
+}
+
+.popup__redirect-button {
+  border: none;
+  background: none;
+  font-family: Inter-regular;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: #2f71e5;
+  cursor: url("../../images/Pointer.svg"), pointer;
+}

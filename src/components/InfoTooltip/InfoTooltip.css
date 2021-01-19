@@ -1,0 +1,101 @@
+.info-tooltip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.2s linear 0s, opacity 0.4s linear;
+}
+
+.info-tooltip_opened {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0.2s linear 0s, opacity 0.4s linear;
+}
+
+.info-tooltip__container {
+  display: flex;
+  flex-direction: column;
+  width: 430px;
+  position: relative;
+  background: #ffffff;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+  padding: 43px 36px 51px 36px;
+}
+
+@media (max-width: 624px) {
+  .info-tooltip__container {
+    bottom: 20px;
+    width: 100%;
+    border-bottom: none;
+    box-shadow: 0 -5px 5px -5px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.info-tooltip__infotip-text {
+  font-family: Roboto-black;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 28px;
+  color: #000000;
+  margin: 0;
+}
+
+@media (max-width: 624px) {
+  .info-tooltip__infotip-text {
+    margin-top: 16px;
+  }
+}
+
+.info-tooltip__button {
+  border: none;
+  background: none;
+  font-family: Inter-regular;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  color: #2f71e5;
+  text-align: start;
+  padding: 0;
+  margin-top: 14px;
+  cursor: url("../../images/Pointer.svg"), pointer;
+}
+
+.info-tooltip__close-button {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0);
+  background-image: url(../../images/cross.svg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: url("../../images/Pointer.svg"), pointer;
+  position: absolute;
+  top: -45px;
+  right: -45px;
+}
+
+@media (max-width: 624px) {
+  .info-tooltip__close-button {
+    width: 18px;
+    height: 18px;
+    background-image: url(../../images/crossBlack.svg);
+    right: 25px;
+    top: 20px;
+  }
+}
+
+.info-tooltip__close-button:hover {
+  opacity: 0.6;
+}

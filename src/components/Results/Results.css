@@ -1,0 +1,75 @@
+.results {
+  background: #f5f6f7;
+  color: #1a1b22;
+  padding: 80px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 1080px) {
+  .results {
+    padding: 40px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .results {
+    padding: 32px 0;
+  }
+}
+
+.results__header {
+  margin: 0 0 0 104px;
+  font-family: Roboto Slab;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 40px;
+  line-height: 115%;
+}
+
+@media (max-width: 1080px) {
+  .results__header {
+    margin-left: 40px;
+    font-size: 30px;
+    line-height: 113%;
+  }
+}
+
+@media (max-width: 600px) {
+  .results__header {
+    margin-left: 16px;
+  }
+}
+
+.results__button {
+  background: #ffffff;
+  border-radius: 80px;
+  width: 288px;
+  height: 64px;
+  align-self: center;
+  font-family: Roboto-medium;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 133%;
+  border: 0 solid;
+  cursor: url("../../images/Pointer.svg"), pointer;
+}
+
+.results__button:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 1080px) {
+  .results__button {
+    width: 240px;
+    height: 56px;
+  }
+}
+
+@media (max-width: 600px) {
+  .results__button {
+    width: 288px;
+    height: 56px;
+  }
+}

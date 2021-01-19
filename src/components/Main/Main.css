@@ -1,0 +1,21 @@
+.main {
+  width: 100%;
+}
+
+.main__upper-block {
+  background-image: url(../../images/fonBig.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media (max-width: 770px) {
+  .main__upper-block {
+    background-image: url(../../images/fonMedium.png);
+  }
+}
+
+@media (max-width: 624px) {
+  .main__upper-block {
+    background-image: url(../../images/fonSmall.png);
+  }
+}

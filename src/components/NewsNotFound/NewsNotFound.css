@@ -1,0 +1,67 @@
+.news-not-found {
+  margin: 0;
+  background-color: #f5f6f7;
+  font-style: normal;
+  font-weight: normal;
+  text-align: center;
+  display: grid;
+  justify-content: center;
+}
+
+.news-not-found__no-match {
+  padding: 86px 80px 80px;
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .news-not-found__no-match {
+    padding: 32px 16px 32px;
+  }
+}
+
+.news-not-found__image {
+  margin: auto;
+  width: 74px;
+  height: 74px;
+  background-image: url(../../images/not-found.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.news-not-found__title {
+  color: #1a1b22;
+  margin: 40px 0 16px 0;
+  font-family: Roboto Slab;
+  font-size: 26px;
+  line-height: 115%;
+}
+
+.news-not-found__text {
+  max-width: 365px;
+  margin: 0;
+  color: #b6bcbf;
+  font-family: Roboto;
+  font-size: 18px;
+  line-height: 133%;
+}
+
+.news-not-found__error {
+  padding: 86px 80px 80px;
+  max-width: 365px;
+  margin: 0;
+  color: #b6bcbf;
+  font-family: Roboto;
+  font-size: 18px;
+  line-height: 133%;
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .news-not-found__error {
+    padding: 32px 16px 32px;
+  }
+}
+
+.news-not-found_activ {
+  display: block;
+}
