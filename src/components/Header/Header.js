@@ -6,9 +6,15 @@ import cross from "../../images/cross.svg";
 import menuBlack from "../../images/menu-black.svg";
 import menuWhite from "../../images/menu-white.svg";
 
-function Header({ theme, loggedIn, onAuth }) {
+function Header({
+  theme,
+  loggedIn,
+  onAuth,
+  onSignOut,
+  handleredirect,
+  deleteFromSaved,
+}) {
   const [menuActiv, setMenuActiv] = React.useState(false);
-
   const className = `header ${theme === "_white" ? "header_white" : ""} ${
     menuActiv ? "header_menu-activ" : ""
   }`;
@@ -31,10 +37,13 @@ function Header({ theme, loggedIn, onAuth }) {
         </div>
       </div>
       <Navigation
+        onSignOut={onSignOut}
         theme={theme}
         loggedIn={loggedIn}
         onAuth={onAuth}
         menuActiv={menuActiv}
+        handleredirect={handleredirect}
+        deleteFromSaved={deleteFromSaved}
       />
     </header>
   );

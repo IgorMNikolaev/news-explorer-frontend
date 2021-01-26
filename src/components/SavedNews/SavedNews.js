@@ -5,12 +5,24 @@ import NewsCardList from "../NewsCardList/NewsCardList";
 import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 import Header from "../Header/Header";
 
-function SavedNews({ loggedIn }) {
+function SavedNews({
+  loggedIn,
+  onSignOut,
+  savedArticles,
+  deleteFromSaved,
+  sortedNews,
+  ...rest
+}) {
   return (
     <section className="saved-news">
-      <Header theme="_white" loggedIn={loggedIn} />
-      <SavedNewsHeader />
-      <NewsCardList loggedIn={loggedIn} saved={true} />
+      <Header theme="_white" loggedIn={loggedIn} onSignOut={onSignOut} />
+      <SavedNewsHeader savedArticles={savedArticles} sortedNews={sortedNews} />
+      <NewsCardList
+        loggedIn={loggedIn}
+        saved={true}
+        savedArticles={savedArticles}
+        deleteFromSaved={deleteFromSaved}
+      />
     </section>
   );
 }

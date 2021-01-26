@@ -3,8 +3,18 @@ import "./Navigation.css";
 import { NavLink } from "react-router-dom";
 import logout from "../../images/logout.svg";
 import logoutWhite from "../../images/logOutWhiteTheme.svg";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-function Navigation({ theme, loggedIn, onAuth, menuActiv }) {
+function Navigation({
+  theme,
+  loggedIn,
+  onAuth,
+  menuActiv,
+  onSignOut,
+  handleredirect,
+}) {
+  const currentUser = React.useContext(CurrentUserContext);
+
   return (
     <nav
       className={`${
@@ -12,6 +22,7 @@ function Navigation({ theme, loggedIn, onAuth, menuActiv }) {
       }`}
     >
       <NavLink
+        onClick={handleredirect}
         exact
         to="/"
         activeClassName={`navigation__link-active${theme}`}
@@ -38,6 +49,7 @@ function Navigation({ theme, loggedIn, onAuth, menuActiv }) {
         </button>
       </div>
       <NavLink
+        onClick={handleredirect}
         to="/saved-news"
         activeClassName={`navigation__link-active${theme}`}
         className={`navigation__link ${
@@ -56,11 +68,12 @@ function Navigation({ theme, loggedIn, onAuth, menuActiv }) {
         } navigation__button_last`}
       >
         <button
+          onClick={onSignOut}
           className={`naviganion__button ${
             theme === "_white" ? "naviganion__button_white" : ""
           }${menuActiv ? "navigation__link_menu-activ" : ""}`}
         >
-          <p className="navigation__button-text">Имя</p>
+          <p className="navigation__button-text">{currentUser}</p>
           <img
             className="navigation__button-image"
             src={theme !== "_white" || menuActiv ? logout : logoutWhite}

@@ -21,7 +21,7 @@
   }
 }
 
-@media (max-width: 784px) {
+@media (max-width: 900px) {
   .news-card-list {
     grid-template-columns: repeat(2, 1fr);
   }

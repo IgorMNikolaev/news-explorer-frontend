@@ -2,17 +2,32 @@ import React from "react";
 import Popup from "../Popup/Popup";
 import "./EntrancePopup.css";
 
-function EntrancePopup({ isOpen, onClose, isLoading, onAuth, ...rest }) {
+function EntrancePopup({
+  isOpen,
+  onClose,
+  isLoading,
+  onAuth,
+  authorize,
+  message,
+  ...rest
+}) {
   const [email, setEmail] = React.useState("");
-  const [passward, setPassward] = React.useState("");
+  const [password, setPassword] = React.useState("");
 
   function handleEmailChange(e) {
     setEmail(e.target.value);
   }
 
-  function handlePasswardChange(e) {
-    setPassward(e.target.value);
+  function handlePasswordChange(e) {
+    setPassword(e.target.value);
   }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    authorize(email, password);
+    setEmail("");
+    setPassword("");
+  };
 
   return (
     <Popup
@@ -25,6 +40,7 @@ function EntrancePopup({ isOpen, onClose, isLoading, onAuth, ...rest }) {
       isLoading={isLoading}
       Link={onAuth}
       redirectText="Зарегистрироваться"
+      onSubmit={handleSubmit}
     >
       <label className="entrance__input-cover">
         Email
@@ -37,7 +53,7 @@ function EntrancePopup({ isOpen, onClose, isLoading, onAuth, ...rest }) {
           value={email}
           onChange={handleEmailChange}
         />
-        <span className="entrance__input-error"></span>
+        <span className="entrance__input-error">{message}</span>
       </label>
 
       <label className="entrance__input-cover">
@@ -48,10 +64,10 @@ function EntrancePopup({ isOpen, onClose, isLoading, onAuth, ...rest }) {
           className="entrance__input"
           placeholder="Введите пароль"
           required
-          value={passward}
-          onChange={handlePasswardChange}
+          value={password}
+          onChange={handlePasswordChange}
         />
-        <span className="entrance__input-error"></span>
+        <span className="entrance__input-error">{message}</span>
       </label>
     </Popup>
   );

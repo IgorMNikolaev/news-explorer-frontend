@@ -1,0 +1,24 @@
+.news-error {
+  margin: 0;
+  background-color: #f5f6f7;
+  font-style: normal;
+  font-weight: normal;
+  text-align: center;
+  display: grid;
+  justify-content: center;
+}
+.news-error__error {
+  padding: 86px 80px 80px;
+  max-width: 365px;
+  margin: 0;
+  color: #b6bcbf;
+  font-family: Roboto;
+  font-size: 18px;
+  line-height: 133%;
+}
+
+@media (max-width: 600px) {
+  .news-error__error {
+    padding: 32px 16px 32px;
+  }
+}

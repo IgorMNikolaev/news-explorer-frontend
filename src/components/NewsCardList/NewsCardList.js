@@ -2,17 +2,40 @@ import React from "react";
 import "./NewsCardList.css";
 import NewsCard from "../NewsCard/NewsCard";
 
-function NewsCardList({ loggedIn, saved }) {
+function NewsCardList({
+  saved,
+  articles,
+  savedArticles,
+  saveNewArticle,
+  deleteSavedArticle,
+  deleteFromSaved,
+  ...rest
+}) {
   return (
     <ul className="news-card-list">
-      <NewsCard loggedIn={loggedIn} saved={saved} />
-      <NewsCard loggedIn={loggedIn} saved={saved} />
-      <NewsCard loggedIn={loggedIn} saved={saved} />
-      <NewsCard loggedIn={loggedIn} saved={saved} />
-      <NewsCard loggedIn={loggedIn} saved={saved} />
-      <NewsCard loggedIn={loggedIn} saved={saved} />
-      <NewsCard loggedIn={loggedIn} saved={saved} />
-      <NewsCard loggedIn={loggedIn} saved={saved} />
+      {!saved &&
+        articles.map((article) => (
+          <NewsCard
+            saved={saved}
+            key={article.link}
+            {...article}
+            {...rest}
+            saveNewArticle={saveNewArticle}
+            deleteSavedArticle={deleteSavedArticle}
+          />
+        ))}
+      {saved &&
+        savedArticles.map((savedArticle) => (
+          <NewsCard
+            saved={saved}
+            key={savedArticle.link}
+            {...savedArticle}
+            {...rest}
+            saveNewArticle={saveNewArticle}
+            deleteSavedArticle={deleteSavedArticle}
+            deleteFromSaved={deleteFromSaved}
+          />
+        ))}
     </ul>
   );
 }
