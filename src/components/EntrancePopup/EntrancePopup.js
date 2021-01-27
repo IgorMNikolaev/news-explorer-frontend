@@ -31,9 +31,15 @@ function EntrancePopup({
     },
   });
 
+  const closeEntrance = () => {
+    onClose();
+    formik.handleReset()
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     authorize(formik.values.email, formik.values.password);
+    formik.handleReset()
   };
 
   return (
@@ -41,7 +47,7 @@ function EntrancePopup({
       name="entrance"
       title="Вход"
       isOpen={isOpen}
-      onClose={onClose}
+      onClose={closeEntrance}
       submitText="Войти"
       submitLoadText="Вход..."
       isLoading={isLoading}

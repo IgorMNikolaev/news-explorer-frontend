@@ -39,9 +39,15 @@ function AuthPopup({
     },
   });
 
+  const closeAuth = () => {
+    onClose();
+    formik.handleReset()
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     register(formik.values.email, formik.values.password, formik.values.name);
+    formik.handleReset();
   };
 
   return (
@@ -49,7 +55,7 @@ function AuthPopup({
       name="auth"
       title="Регистрация"
       isOpen={isOpen}
-      onClose={onClose}
+      onClose={closeAuth}
       submitText="Зарегистрироваться"
       submitLoadText="Регистрация..."
       isLoading={isLoading}
