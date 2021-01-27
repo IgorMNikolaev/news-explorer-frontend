@@ -41,7 +41,6 @@
 
 .auth__input-error {
   margin-top: 25px;
-  display: none;
   font-weight: normal;
   color: #ff0000;
   font-family: Inter-regular;

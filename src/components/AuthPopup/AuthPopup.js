@@ -1,6 +1,7 @@
 import React from "react";
 import Popup from "../Popup/Popup";
 import "./AuthPopup.css";
+import { useFormik } from "formik";
 
 function AuthPopup({
   isOpen,
@@ -11,25 +12,36 @@ function AuthPopup({
   message,
   ...rest
 }) {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [name, setName] = React.useState("");
-
-  function handleEmailChange(e) {
-    setEmail(e.target.value);
-  }
-
-  function handlePasswordChange(e) {
-    setPassword(e.target.value);
-  }
-
-  function handleNameChange(e) {
-    setName(e.target.value);
-  }
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+      name: "",
+    },
+    validate: (values) => {
+      const errors = {};
+      if (!values.email) {
+        errors.email = "Введите почту!";
+      } else if (!/^[^@]+@[^@.]+\.[^@]+$/.test(values.email)) {
+        errors.email = "Неверный формат почты!";
+      }
+      if (!values.password) {
+        errors.password = "Нужен пароль!";
+      }
+      if (!values.name) {
+        errors.name = "Введите своё имя!";
+      } else if (values.name.length < 3) {
+        errors.name = "Введи имя по-длиннее!";
+      } else if (values.name.length > 30) {
+        errors.name = "Cлишком длинное имя!";
+      }
+      return errors;
+    },
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    register(email, password, name);
+    register(formik.values.email, formik.values.password, formik.values.name);
   };
 
   return (
@@ -44,45 +56,57 @@ function AuthPopup({
       Link={onEntrance}
       redirectText="войти"
       onSubmit={handleSubmit}
+      formikValid={formik.isValid}
+      formikDirty={formik.dirty}
+      message={message}
     >
       <label className="auth__input-cover">
         Email
         <input
           type="email"
-          name="Email"
+          name="email"
           className="auth__input"
           placeholder="Введите свой email"
           required
-          value={email}
-          onChange={handleEmailChange}
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
         />
-        <span className="auth__input-error">{message}</span>
+        {formik.touched.email && formik.errors.email && (
+          <span className="auth__input-error">{formik.errors.email}</span>
+        )}
       </label>
       <label className="auth__input-cover">
         Пароль
         <input
           type="password"
-          name="Пароль"
+          name="password"
           className="auth__input"
           placeholder="Введите пароль"
           required
-          value={password}
-          onChange={handlePasswordChange}
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
         />
-        <span className="auth__input-error">{message}</span>
+        {formik.touched.password && formik.errors.password && (
+          <span className="auth__input-error">{formik.errors.password}</span>
+        )}
       </label>
       <label className="auth__input-cover">
         Имя
         <input
           type="text"
-          name="Имя"
+          name="name"
           className="auth__input"
           placeholder="Введите своё имя"
           required
-          value={name}
-          onChange={handleNameChange}
+          value={formik.values.name}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
         />
-        <span className="auth__input-error">{message}</span>
+        {formik.touched.name && formik.errors.name && (
+          <span className="auth__input-error">{formik.errors.name}</span>
+        )}
       </label>
     </Popup>
   );

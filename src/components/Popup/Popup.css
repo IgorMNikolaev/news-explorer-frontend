@@ -168,3 +168,19 @@ background: #347EFF;
   color: #2f71e5;
   cursor: url("../../images/Pointer.svg"), pointer;
 }
+
+.popup__message {
+  margin-top: 25px;
+  font-weight: normal;
+  color: #ff0000;
+  font-family: Inter-regular;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  width: 83.25%;
+  /* position: absolute;
+  top: 35px;
+  left: 0; */
+  display: block;
+}

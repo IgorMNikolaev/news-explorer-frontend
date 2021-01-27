@@ -8,7 +8,6 @@ function InfoTooltip({ isOpen, onClose, onEntrance }) {
   };
 
   return (
-    <>
       <section
         className={`info-tooltip ${isOpen ? "info-tooltip_opened" : ""}`}
       >
@@ -25,7 +24,6 @@ function InfoTooltip({ isOpen, onClose, onEntrance }) {
           ></button>
         </div>
       </section>
-    </>
   );
 }
 

@@ -1,6 +1,6 @@
-import React, { useLayoutEffect } from "react";
+import React from "react";
 import "./App.css";
-import { Route, Switch, useLocation } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Main from "../Main/Main";
 import SavedNews from "../SavedNews/SavedNews";
 import Footer from "../Footer/Footer";
@@ -44,11 +44,12 @@ function App() {
       getSavedArticles();
     }
     const allArticles = JSON.parse(localStorage.getItem("allArticles"));
-    setSearchedArticles(allArticles);
 
     if (allArticles) {
       setArticles(allArticles.slice(0, articlesNumber));
+      setSearchedArticles(allArticles);
     }
+
     const user = localStorage.getItem("user");
     if (user) {
       setCurrentUser(user);
@@ -56,20 +57,21 @@ function App() {
   }, []);
 
   const BASE_URL = "https://api.five.students.nomoredomains.monster";
-  // const BASE_URL = "http://localhost:3000";
-
+  const TimePeriod = 7;
+  const articlesIncreaseStep = 3;
   const thisdaydate = new Date().toISOString().slice(0, 10);
   const today = new Date();
   const year = today.getFullYear();
   const month = today.getMonth();
   const day = today.getDate();
-  const finalDate = new Date(year, month, day + 8).toISOString().slice(0, 10);
+  const finalDate = new Date(year, month, day - TimePeriod)
+    .toISOString()
+    .slice(0, 10);
 
   const mainApi = new MainApi({
     baseUrl: BASE_URL,
   });
 
-  //
   const newsApi = new NewsApi({
     apiKey: "ecd21e8eea6c4ee183c41786542767c8",
     from: thisdaydate,
@@ -108,6 +110,7 @@ function App() {
     setAuthPopupOpen(false);
     setEntrancePopupOpen(false);
     setInfoTooltipOpen(false);
+    setMessage("");
   }
 
   const handleLogin = () => {
@@ -123,7 +126,7 @@ function App() {
           setMessage("");
           infoTooltipOpen();
         } else {
-          setMessage("Что-то пошло не так!");
+          setMessage(res.message);
         }
       })
       .catch((err) => console.log(err));
@@ -133,18 +136,18 @@ function App() {
     authorizationReq(email, password)
       .then((data) => {
         if (data.token) {
+          setMessage("");
           setToken(data.token);
           return data.token;
         } else {
+          setMessage(data.message);
           return;
         }
       })
       .then((token) => {
         if (!token) {
-          setMessage("Что-то пошло не так!");
         }
         if (token) {
-          setMessage("");
           handleLogin();
           getSavedArticles();
           mainApi
@@ -169,7 +172,7 @@ function App() {
     localStorage.removeItem("allArticles");
   }
 
-  const handleNewsSearch = (keyWord) => {
+  const handleNewsSearch = async (keyWord) => {
     setLoading(true);
     newsApi
       .getArticle(keyWord)
@@ -194,12 +197,12 @@ function App() {
         } else {
           setNoResults(false);
         }
+        setLoading(false);
       })
       .catch((error) => {
         console.log(error);
         setResultsError(true);
-      })
-      .finally(setLoading(false));
+      });
   };
 
   const getSavedArticles = () => {
@@ -308,7 +311,7 @@ function App() {
   };
 
   function moreArticles() {
-    setArticlesNumber(articlesNumber + 3);
+    setArticlesNumber(articlesNumber + articlesIncreaseStep);
     const allArticles = JSON.parse(localStorage.getItem("allArticles"));
     const show = allArticles.slice(0, articlesNumber + 3);
     setArticles(show);

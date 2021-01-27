@@ -1,6 +1,7 @@
 import React from "react";
 import Popup from "../Popup/Popup";
 import "./EntrancePopup.css";
+import { useFormik } from "formik";
 
 function EntrancePopup({
   isOpen,
@@ -11,22 +12,28 @@ function EntrancePopup({
   message,
   ...rest
 }) {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-
-  function handleEmailChange(e) {
-    setEmail(e.target.value);
-  }
-
-  function handlePasswordChange(e) {
-    setPassword(e.target.value);
-  }
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validate: (values) => {
+      const errors = {};
+      if (!values.email) {
+        errors.email = "Введите почту!";
+      } else if (!/^[^@]+@[^@.]+\.[^@]+$/.test(values.email)) {
+        errors.email = "Неверный формат почты!";
+      }
+      if (!values.password) {
+        errors.password = "Нужен пароль!";
+      }
+      return errors;
+    },
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    authorize(email, password);
-    setEmail("");
-    setPassword("");
+    authorize(formik.values.email, formik.values.password);
   };
 
   return (
@@ -41,33 +48,44 @@ function EntrancePopup({
       Link={onAuth}
       redirectText="Зарегистрироваться"
       onSubmit={handleSubmit}
+      formikValid={formik.isValid}
+      formikDirty={formik.dirty}
+      message={message}
     >
       <label className="entrance__input-cover">
         Email
         <input
           type="email"
-          name="Email"
+          name="email"
           className="entrance__input"
           placeholder="Введите свой email"
           required
-          value={email}
-          onChange={handleEmailChange}
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
         />
-        <span className="entrance__input-error">{message}</span>
+        {formik.touched.email && formik.errors.email && (
+          <span className="entrance__input-error">{formik.errors.email}</span>
+        )}
       </label>
 
       <label className="entrance__input-cover">
         Пароль
         <input
           type="password"
-          name="Пароль"
+          name="password"
           className="entrance__input"
           placeholder="Введите пароль"
           required
-          value={password}
-          onChange={handlePasswordChange}
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
         />
-        <span className="entrance__input-error">{message}</span>
+        {formik.touched.password && formik.errors.password && (
+          <span className="entrance__input-error">
+            {formik.errors.password}
+          </span>
+        )}
       </label>
     </Popup>
   );
